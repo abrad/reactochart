@@ -28,6 +28,7 @@ import BarChart from '../../src/BarChart';
 import AreaBarChart from '../../src/AreaBarChart';
 import LineChart from '../../src/LineChart';
 import AreaHeatmap from '../../src/AreaHeatmap';
+import AreaHeatmapColor from '../../src/AreaHeatmapColor';
 import ScatterPlot from '../../src/ScatterPlot';
 import PieChart from '../../src/PieChart';
 import TreeMap from '../../src/TreeMap';
@@ -685,6 +686,35 @@ const AreaHeatmapExample = (props) => {
   </div>;
 };
 
+const AreaHeatmapColorExample = (props) => {
+  const gridData = _.range(10).map(m => {
+    return _.range(10).map(n => {
+      return {
+        x: n,
+        y: m,
+        count: Math.floor(Math.random() * (100 - 0 + 1)) + 0
+      };
+    });
+  });
+
+  return <div>
+    <XYPlot scaleType="linear" {...{width: 500, height: 500}}>
+      <XAxis title="Phase" />
+      <YAxis title="Intensity" />
+
+      <AreaHeatmapColor
+        data={_.flatten(gridData)}
+        getValue="count"
+        getX="x"
+        getXEnd="xEnd"
+        getY="y"
+        getYEnd="yEnd"
+      />
+    </XYPlot>
+  </div>;
+};
+
+
 const MarkerLineExample = (props) => {
   return <div>
     <div>
@@ -977,6 +1007,7 @@ export const examples = [
   {id: 'xAxisTitles', title: 'X Axis Titles', Component: XAxisTitleTest},
   {id: 'yAxisTitles', title: 'Y Axis Titles', Component: YAxisTitleTest},
   {id: 'areaHeatmap', title: 'Area Heatmap Chart', Component: AreaHeatmapExample},
+  {id: 'areaHeatmapColor', title: 'Area Heatmap Color Chart', Component: AreaHeatmapColorExample},
   {id: 'markerLine', title: 'Marker Line Chart', Component: MarkerLineExample},
   {id: 'kde', title: 'Kernel Density Estimation Chart', Component: KDEExample},
   {id: 'histogram', title: 'Histogram + KDE', Component: HistogramKDEExample},
