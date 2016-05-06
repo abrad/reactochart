@@ -51,23 +51,23 @@ export default class ColorHeatmap extends React.Component {
   };
 
   scaleColor = (e, range) => {
-    var $this = this;
+    const $this = this;
     const domain = d3.extent($this.props.data.map(makeAccessor($this.props.getValue)))
-    var startIdx = 0;
-    var endIdx = 1
-    var rangeSize = range[endIdx] - range[startIdx];
-    var domainSize = domain[endIdx] - domain[startIdx];
-    var x = Math.round(e * rangeSize/domainSize) + range[startIdx];
+    const startIdx = 0;
+    const endIdx = 1
+    const rangeSize = range[endIdx] - range[startIdx];
+    const domainSize = domain[endIdx] - domain[startIdx];
+    const x = Math.round(e * rangeSize/domainSize) + range[startIdx];
 
     return x;
   };
 
   getColor = (e) => {
-    var $this = this;
-    var r = 0;
-    var g = 1;
-    var b = 2;
-    var rgb = [e, e, e].map(function(d, i) {
+    const $this = this;
+    const r = 0;
+    const g = 1;
+    const b = 2;
+    const rgb = [e, e, e].map(function(d, i) {
       return $this.scaleColor(d, [$this.props.startColor[i], $this.props.endColor[i]]);
     }).join(',');
 
@@ -75,7 +75,7 @@ export default class ColorHeatmap extends React.Component {
   };
 
   render() {
-    var $this = this;
+    const $this = this;
     const {data, getValue, getX, getY, scale, scaleWidth, scaleHeight} = $this.props;
     const [valueAccessor, xAccessor, yAccessor] =
       [getValue, getX, getY].map(makeAccessor);
@@ -89,7 +89,7 @@ export default class ColorHeatmap extends React.Component {
     return <g className="area-heatmap-chart" {...handlers}>
       <rect x="0" y="0" width={scaleWidth} height={scaleHeight} ref="background" fill="transparent" />
       {data.map((d, i) => {
-        var color = $this.getColor(valueAccessor(d));
+        const color = $this.getColor(valueAccessor(d));
         return <RangeRect
           datum={d}
           scale={scale}
