@@ -692,7 +692,7 @@ const ColorHeatmapExample = (props) => {
       return {
         x: n,
         y: m,
-        count: Math.floor(Math.random() * (100 - 0 + 1)) + 0
+        value: Math.floor(Math.random() * (100 - 0 + 1)) + 0
       };
     });
   });
@@ -704,7 +704,7 @@ const ColorHeatmapExample = (props) => {
 
       <ColorHeatmap
         data={_.flatten(gridData)}
-        getValue="count"
+        getValue="value"
         getX="x"
         getXEnd="xEnd"
         getY="y"

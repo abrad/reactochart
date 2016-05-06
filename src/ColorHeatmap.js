@@ -89,7 +89,7 @@ export default class ColorHeatmap extends React.Component {
     return <g className="area-heatmap-chart" {...handlers}>
       <rect x="0" y="0" width={scaleWidth} height={scaleHeight} ref="background" fill="transparent" />
       {data.map((d, i) => {
-        var color = $this.getColor(d.count);
+        var color = $this.getColor(valueAccessor(d));
         return <RangeRect
           datum={d}
           scale={scale}
