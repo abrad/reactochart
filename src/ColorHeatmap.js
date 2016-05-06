@@ -7,7 +7,7 @@ import RangeRect from './RangeRect';
 import {methodIfFuncProp} from './util.js';
 import {makeAccessor} from './utils/Data';
 
-export default class AreaHeatmapColor extends React.Component {
+export default class ColorHeatmap extends React.Component {
   static propTypes = {
     data: React.PropTypes.array,
 
