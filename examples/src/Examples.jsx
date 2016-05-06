@@ -706,9 +706,9 @@ const ColorHeatmapExample = (props) => {
         data={_.flatten(gridData)}
         getValue="value"
         getX="x"
-        getXEnd="xEnd"
+        getXEnd={d => d.x + 1}
         getY="y"
-        getYEnd="yEnd"
+        getYEnd={d => d.y + 1}
         startColor={[0, 0, 255]}
         endColor={[255, 103, 254]}
       />

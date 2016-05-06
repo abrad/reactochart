@@ -25,10 +25,10 @@ export default class ColorHeatmap extends React.Component {
   };
 
   static getDomain(props) {
-    const {data, getX, getY, getValue} = props;
+    const {data, getX, getXEnd, getY, getYEnd, getValue} = props;
     return {
-      x: d3.extent(data.map(makeAccessor(getX))),
-      y: d3.extent(data.map(makeAccessor(getY))),
+      x: d3.extent(_.flatten([data.map(makeAccessor(getX)), data.map(makeAccessor(getXEnd))])),
+      y: d3.extent(_.flatten([data.map(makeAccessor(getY)), data.map(makeAccessor(getYEnd))])),
       value: d3.extent(data.map(makeAccessor(getValue)))
     };
   };
@@ -76,9 +76,9 @@ export default class ColorHeatmap extends React.Component {
 
   render() {
     const $this = this;
-    const {data, getValue, getX, getY, scale, scaleWidth, scaleHeight} = $this.props;
-    const [valueAccessor, xAccessor, yAccessor] =
-      [getValue, getX, getY].map(makeAccessor);
+    const {data, getValue, getX, getXEnd, getY, getYEnd, scale, scaleWidth, scaleHeight} = $this.props;
+    const [valueAccessor, xAccessor, xEndAccessor, yAccessor, yEndAccessor] =
+      [getValue, getX, getXEnd, getY, getYEnd].map(makeAccessor);
 
     const handlers = {
       onMouseMove: methodIfFuncProp('onMouseMove', $this.props, this),
@@ -93,10 +93,10 @@ export default class ColorHeatmap extends React.Component {
         return <RangeRect
           datum={d}
           scale={scale}
-          getX={d => d.x}
-          getXEnd={d => d.x + 1}
-          getY={d => d.y}
-          getYEnd={d => d.y + 1}
+          getX={getX}
+          getXEnd={getXEnd}
+          getY={getY}
+          getYEnd={getYEnd}
           style={{fill: color}}
           key={i}
           />;
