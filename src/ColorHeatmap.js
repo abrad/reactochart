@@ -12,10 +12,7 @@ export default class ColorHeatmap extends React.Component {
     data: React.PropTypes.array,
 
     endColor: React.PropTypes.array,
-    startColor: React.PropTypes.array,
-
-    rectWidth: React.PropTypes.number,
-    rectHeight: React.PropTypes.number
+    startColor: React.PropTypes.array
   };
 
   static defaultProps = {
