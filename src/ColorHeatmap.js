@@ -61,9 +61,6 @@ export default class ColorHeatmap extends React.Component {
 
   getColor = (e) => {
     const $this = this;
-    const r = 0;
-    const g = 1;
-    const b = 2;
     const rgb = [e, e, e].map(function(d, i) {
       return $this.scaleColor(d, [$this.props.startColor[i], $this.props.endColor[i]]);
     }).join(',');
