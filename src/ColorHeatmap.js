@@ -92,7 +92,7 @@ export default class ColorHeatmap extends React.Component {
           getY={getY}
           getYEnd={getYEnd}
           style={{fill: color}}
-          key={i}
+          key={`color-heat-map-rect-${i}`}
           />;
       })}
     </g>;
