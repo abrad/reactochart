@@ -75,9 +75,9 @@ export default class ColorHeatmap extends React.Component {
       [getValue, getX, getXEnd, getY, getYEnd].map(makeAccessor);
 
     const handlers = {
-      onMouseMove: methodIfFuncProp('onMouseMove', $this.props, this),
-      onMouseEnter: methodIfFuncProp('onMouseEnter', $this.props, this),
-      onMouseLeave: methodIfFuncProp('onMouseLeave', $this.props, this)
+      onMouseMove: methodIfFuncProp('onMouseMove', $this.props, $this),
+      onMouseEnter: methodIfFuncProp('onMouseEnter', $this.props, $this),
+      onMouseLeave: methodIfFuncProp('onMouseLeave', $this.props, $this)
     };
 
     return <g className="area-heatmap-chart" {...handlers}>
