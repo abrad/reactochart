@@ -709,6 +709,8 @@ const ColorHeatmapExample = (props) => {
         getXEnd="xEnd"
         getY="y"
         getYEnd="yEnd"
+        startColor={[0, 0, 255]}
+        endColor={[255, 103, 254]}
       />
     </XYPlot>
   </div>;
