@@ -57,7 +57,7 @@ export default class ColorHeatmap extends React.Component {
     var endIdx = 1
     var rangeSize = range[endIdx] - range[startIdx];
     var domainSize = domain[endIdx] - domain[startIdx];
-    var x = Math.round(e * rangeSize/domainSize);
+    var x = Math.round(e * rangeSize/domainSize) + range[startIdx];
 
     return x;
   };
